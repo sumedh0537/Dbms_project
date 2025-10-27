@@ -1,0 +1,44 @@
+mysql> desc applications;
++--------------------+---------------------------------------+------+-----+-------------------+-------------------+
+| Field              | Type                                  | Null | Key | Default           | Extra             |
++--------------------+---------------------------------------+------+-----+-------------------+-------------------+
+| id                 | int                                   | NO   | PRI | NULL              | auto_increment    |
+| user_id            | int                                   | NO   | MUL | NULL              |                   |
+| company_id         | int                                   | NO   | MUL | NULL              |                   |
+| application_status | enum('pending','accepted','rejected') | YES  |     | pending           |                   |
+| created_at         | timestamp                             | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++--------------------+---------------------------------------+------+-----+-------------------+-------------------+
+5 rows in set (0.08 sec)
+
+mysql> desc companies;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| id          | int          | NO   | PRI | NULL              | auto_increment    |
+| name        | varchar(255) | NO   |     | NULL              |                   |
+| description | text         | YES  |     | NULL              |                   |
+| location    | varchar(255) | YES  |     | NULL              |                   |
+| created_at  | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++-------------+--------------+------+-----+-------------------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc skills;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int          | NO   | PRI | NULL    | auto_increment |
+| user_id | int          | NO   | MUL | NULL    |                |
+| skill   | varchar(255) | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc users;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(100) | YES  |     | NULL    |                |
+| email    | varchar(100) | YES  | UNI | NULL    |                |
+| password | varchar(100) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)

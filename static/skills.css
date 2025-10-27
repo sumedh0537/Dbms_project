@@ -1,0 +1,119 @@
+
+
+.skills-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2em;
+    color: #004043;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    flex: 1; /* Allow the input to take available space */
+}
+
+.add-skill-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Space between input and button */
+}
+
+.add-skill-button:hover {
+    background-color: #0056b3;
+}
+
+/* Skills List as a Grid */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between grid items */
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background: #004043;
+    padding: 10px;
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+    text-align: center; /* Center align text */
+}
+
+.skills-list li form {
+    display: flex;
+    justify-content: center; /* Center align the update form */
+    align-items: center;
+}
+
+.skills-list li input[type="text"] {
+    margin-right: 10px;
+    flex: 1; /* Allow the input to take available space */
+}
+.update-form {
+    display: none; /* Initially hide the update form */
+    margin-top: 10px; /* Space above the form */
+}
+.update-button {
+    margin-left: 15px; /* Add space between the skill name and the button */
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-button:hover {
+    background-color: #0056b3;
+}
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.update-button {
+    margin-left: auto;
+}
+
+.delete-button {
+    margin-left: 10px; /* Space between update and delete buttons */
+    padding: 5px 10px;
+    background-color: #dc3545; /* Bootstrap danger color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker shade on hover */
+}

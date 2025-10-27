@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Hunt Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="container">
+        <h1><a href="{{ url_for('home') }}" class="portal-title"></a>Job Hunt Portal</h1>
+
+        <nav>
+            <ul>
+                <li><a href="{{url_for('companies')}}">Companies</a></li>
+                {% if username %}
+                    <li><a href="{{ url_for('my_applications') }}">My Applications</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li style="color: rgb(255, 255, 161); font-weight: bold;">Welcome, {{ username }}</li>
+                {% else %}
+                    <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <main>
+        <section class="hero">
+            <h1>Find your dream job</h1>
+            <input type="text" placeholder="Job title, keywords, or company">
+            <button id="searchBtn"><h4>Search</h4></button>
+        </section>
+
+        <section class="featured-jobs">
+            <h2>Menu</h2>
+            <div class="job-list">
+                <div class="job-item">
+                    <h3>SKILLS</h3>
+                    <p>
+                        here the user can input their skills and they will be stored according to their id
+                    </p>
+                    <button onclick="location.href='{{ url_for('skills') }}'">Update now</button>
+                </div>
+                <div class="job-item">
+                    <h3>COMPANIES</h3>
+                    <p>
+                        here the user can view available companies.
+                    </p>
+                    <button onclick="location.href='{{ url_for('companies') }}'">VIEW</button>
+                </div>
+                
+                <div class="job-item">
+                    <h3>Update your profile</h3>
+                    <p>
+                        here the user can update their profile however the want.
+                    </p>
+                    <button onclick="location.href='{{ url_for('update_profile') }}'">Edit</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Job Hunt Portal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

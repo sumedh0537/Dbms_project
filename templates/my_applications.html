@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header>
+        <div class="header-container">
+            <h1 class="portal-title">
+                <a href="{{ url_for('home') }}" class="portal-link">Job Hunt Portal</a>
+            </h1> <!-- Portal Title on the left -->
+            <h1 class="main-title">Find Your Dream Job</h1> <!-- Main Title in the center -->
+        </div>
+    </header>
+    <style>
+        .portal-link {
+            text-decoration: none; /* Remove underline from the link */
+            color: #ffffff; /* Set the text color to white */
+        }
+
+        .portal-link:hover {
+            text-decoration: underline; /* Optional: Underline on hover */
+            color: #ffcc00; /* Change color on hover (optional) */
+        }
+        .header-container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between the titles */
+            align-items: center; /* Center align items vertically */
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        .portal-title {
+            flex: 0 1 auto; /* Allow the portal title to take only necessary space */
+            text-align: left; /* Align portal title to the left */
+            margin-right: auto; /* Push the main title to the center */
+            font-size: 1em; /* Adjust the font size as needed */
+            font-weight: bold; /* Optional: Make the font bold */
+            color: #ffffff; /* Optional: Change the color if needed */
+        }
+
+        .main-title {
+            flex: 1; /* Allow the main title to take available space */
+            text-align: center; /* Center align the main title */
+            margin-left: 20px; /* Optional: Add some space to the left of the main title */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #004043;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .delete-button {
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Company Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                    <tr>
+                        <td>{{ application[0] }}</td> <!-- Application ID -->
+                        <td>{{ application[1] }}</td> <!-- Company Name -->
+                        <td>{{ application[2] }}</td> <!-- Application Status -->
+                        <td>
+                            <form method="POST" action="{{ url_for('delete_application', application_id=application[0]) }}">
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if applications|length == 0 %}
+            <p>You have no applications.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

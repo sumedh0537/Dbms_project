@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header>
+        <div class="header-container">
+            <h1 class="portal-title">
+                <a href="{{ url_for('home') }}" class="portal-link">Job Hunt Portal</a>
+            </h1> <!-- Portal Title on the left -->
+            <h1 class="main-title">Find Your Dream Job</h1> <!-- Main Title in the center -->
+        </div>
+    </header>
+    <style>
+        .portal-link {
+            text-decoration: none; /* Remove underline from the link */
+            color: #ffffff; /* Set the text color to white */
+        }
+
+        .portal-link:hover {
+            text-decoration: underline; /* Optional: Underline on hover */
+            color: #ffcc00; /* Change color on hover (optional) */
+        }
+        .header-container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between the titles */
+            align-items: center; /* Center align items vertically */
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        .portal-title {
+            flex: 0 1 auto; /* Allow the portal title to take only necessary space */
+            text-align: left; /* Align portal title to the left */
+            margin-right: auto; /* Push the main title to the center */
+            font-size: 1em; /* Adjust the font size as needed */
+            font-weight: bold; /* Optional: Make the font bold */
+            color: #ffffff; /* Optional: Change the color if needed */
+        }
+
+        .main-title {
+            flex: 1; /* Allow the main title to take available space */
+            text-align: center; /* Center align the main title */
+            margin-left: 20px; /* Optional: Add some space to the left of the main title */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='update_profile.css') }}"> <!-- Link to the new CSS file -->
+</head>
+<body>
+    <main>
+        <form method="POST" action="/update_profile">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" value="{{ user[1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" value="{{ user[2] }}" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Update Profile</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
